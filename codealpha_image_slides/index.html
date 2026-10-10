@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Lumina Gallery - A curated photography gallery showcasing moments, places, and perspectives with interactive category filters and an immersive lightbox viewer.">
+  <title>Lumina Gallery | Curated Photography</title>
+  
+  <!-- Google Fonts: Plus Jakarta Sans & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Header / Navigation -->
+  <header class="site-header" id="site-header">
+    <div class="header-container">
+      <a href="#hero" class="brand-logo" id="brand-logo" aria-label="Lumina Gallery Home">
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="3" y="3" width="18" height="18" rx="3" ry="3"></rect>
+          <circle cx="8.5" cy="8.5" r="1.5"></circle>
+          <path d="m21 15-5-5L5 21"></path>
+        </svg>
+        <span class="brand-text">LUMINA</span>
+      </a>
+
+      <!-- Mobile Navigation Toggle -->
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primary-nav">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+
+      <!-- Navigation Links -->
+      <nav class="primary-nav" id="primary-nav" aria-label="Main Navigation">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="#gallery" class="nav-link" id="nav-gallery">Gallery</a></li>
+          <li class="nav-item"><a href="#categories" class="nav-link" id="nav-categories">Categories</a></li>
+          <li class="nav-item"><a href="#about" class="nav-link" id="nav-about">About</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- Hero Section -->
+    <section class="hero-section" id="hero">
+      <div class="hero-container">
+        <div class="hero-badge">Curated Photography</div>
+        <h1 class="hero-title">Discover Beauty in Every Frame</h1>
+        <p class="hero-subtitle">A curated collection of moments, places, and perspectives.</p>
+        <div class="hero-actions">
+          <a href="#gallery" class="btn btn-primary" id="explore-gallery-btn">
+            <span>Explore Gallery</span>
+            <svg class="btn-icon" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M10 3a.75.75 0 01.75.75v10.69l3.72-3.72a.75.75 0 111.06 1.06l-5 5a.75.75 0 01-1.06 0l-5-5a.75.75 0 111.06-1.06l3.72 3.72V3.75A.75.75 0 0110 3z" clip-rule="evenodd" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Categories & Filter Section -->
+    <section class="categories-section" id="categories" aria-label="Gallery Categories">
+      <div class="section-container">
+        <div class="filter-header">
+          <div class="filter-controls" role="toolbar" aria-label="Filter gallery by category">
+            <button type="button" class="filter-btn active" data-category="All" id="filter-all" aria-pressed="true">
+              <span class="filter-label">All</span>
+            </button>
+            <button type="button" class="filter-btn" data-category="Nature" id="filter-nature" aria-pressed="false">
+              <span class="filter-label">Nature</span>
+            </button>
+            <button type="button" class="filter-btn" data-category="Architecture" id="filter-architecture" aria-pressed="false">
+              <span class="filter-label">Architecture</span>
+            </button>
+            <button type="button" class="filter-btn" data-category="People" id="filter-people" aria-pressed="false">
+              <span class="filter-label">People</span>
+            </button>
+            <button type="button" class="filter-btn" data-category="Animals" id="filter-animals" aria-pressed="false">
+              <span class="filter-label">Animals</span>
+            </button>
+          </div>
+          <div class="gallery-counter" id="gallery-counter" aria-live="polite">
+            Showing 20 photographs
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Image Gallery Grid -->
+    <section class="gallery-section" id="gallery" aria-label="Photography Showcase">
+      <div class="section-container">
+        <div class="gallery-grid" id="gallery-grid" role="region" aria-label="Photography collection">
+          <!-- Gallery cards generated dynamically from script.js data array -->
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about" aria-label="About Lumina Gallery">
+      <div class="section-container">
+        <div class="about-card">
+          <div class="about-badge">About Lumina</div>
+          <p class="about-description">
+            Lumina Gallery is a responsive photography gallery designed to showcase beautiful images through interactive category filters and an immersive lightbox experience.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Lightbox Viewer Modal -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image Preview Lightbox" aria-hidden="true">
+    <div class="lightbox-backdrop" id="lightbox-backdrop" tabindex="-1"></div>
+    
+    <div class="lightbox-dialog" id="lightbox-dialog">
+      <!-- Lightbox Header / Controls -->
+      <div class="lightbox-top-bar">
+        <div class="lightbox-counter-badge" id="lightbox-counter">01 / 20</div>
+        <button type="button" class="lightbox-btn lightbox-close-btn" id="lightbox-close" aria-label="Close lightbox (Escape)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Lightbox Media Stage -->
+      <div class="lightbox-stage">
+        <!-- Navigation: Previous -->
+        <button type="button" class="lightbox-btn lightbox-nav-btn prev" id="lightbox-prev" aria-label="Previous image (Left Arrow)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+
+        <!-- Main Image Display Container -->
+        <div class="lightbox-image-wrapper" id="lightbox-image-wrapper">
+          <div class="lightbox-loading-spinner" id="lightbox-spinner" aria-hidden="true"></div>
+          <img src="" alt="" class="lightbox-img" id="lightbox-img">
+        </div>
+
+        <!-- Navigation: Next -->
+        <button type="button" class="lightbox-btn lightbox-nav-btn next" id="lightbox-next" aria-label="Next image (Right Arrow)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Lightbox Footer Details -->
+      <div class="lightbox-caption">
+        <span class="lightbox-category-tag" id="lightbox-category">Category</span>
+        <h2 class="lightbox-title" id="lightbox-title">Image Title</h2>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <p class="footer-credit">Lumina Gallery | Designed & Developed by Rakzana</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
